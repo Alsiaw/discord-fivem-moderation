@@ -1,5 +1,5 @@
  
-  Slash Komutlar
+  # Slash Komutlar
       
   » /ban (oyuncu) (sebep)
   » /unban (ID) (sebep)
@@ -7,7 +7,7 @@
   » /ban-sorgu (ID)
   » /perma (oyuncu) (verdiren) (sebep) (kanıt)
   » /rolver (oyuncu) (rol)
-  - /rolal (oyuncu) (rol)
+  » /rolal (oyuncu) (rol)
   » /seviye (oyuncu/id)
   » /blacklist (ID) (hex) (sebep)
   » /blacklist-iptal (hex)
@@ -47,11 +47,11 @@
   » /tweet (yazı)
   
   
-  Prefix Komutlar
+  # Prefix Komutlar
   .snipe
   
   
-  Sağ Tık Komutlar
+  # Sağ Tık Komutlar
   » Whitelist Onay
   » Whitelist Red
   » Yasaklama
