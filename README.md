@@ -1,5 +1,4 @@
- 
-  # Slash Komutlar
+   # Slash Komutlar
       
   » /ban (oyuncu) (sebep)
   » /unban (ID) (sebep)
