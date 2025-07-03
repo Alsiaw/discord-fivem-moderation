@@ -189,8 +189,8 @@ alsia-bot/
 
 Herhangi bir sorun yaşarsanız veya öneriniz varsa:
 
-- GitHub Issues bölümünden bildirebilirsiniz
-- Discord sunucumuzdan destek alabilirsiniz
+
+- Discord alsiaw
 
 ## 📄 Lisans
 
