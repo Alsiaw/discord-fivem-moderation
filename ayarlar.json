@@ -1,0 +1,152 @@
+{
+    "Bot": {
+        "botID": "",
+        "SunucuID": "",
+        "SunucuDavet": "",
+        "prefix": ".",
+        "botDurum": "dev by alsia"
+        
+    },
+   "botDurum": "",
+    "Embed": {
+        "FormAD": "",
+        "SunucuAD": "",
+        "authorembed": "",
+        "link": ""
+    },
+    "Yetkiler": {
+        "KayıtKomut": "",
+        "BotKomut": "",
+        "Staff": [
+            "",
+            "",
+            ""
+           
+        ],
+        "BanYetki": [
+            "",
+            "",
+            "",
+            ""
+            
+        ],
+        "MuteYetki": [
+            "",
+            "",
+            ""
+        ],
+        "YasaklıPermler": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        
+        ]
+    },
+    "Oluşum": {
+        "BaşvuruSistemi": true,
+        "BaşvuruAçık": false,
+        "SınırsızKategori": "",
+        "Log": "",
+        "BaşvuruKategori": "",
+        "RolAltı": ""
+    },
+    "Permler": {
+        "Whitelist": "",
+        "KarakterOnay": "",
+        "Mülakat": "",
+        "Yetkili": "",
+        "Giriş": "",
+        "WlCeza": "",
+        "Blacklist": ""
+    },
+    "Uyarı": {
+        "1x": "",
+        "2x": "",
+        "3x": "",
+        "4x": "",
+        "5x": "",
+        "6x": "",
+        "7x": "",
+        "UyarıLimit": "7",
+        "WlEkleme": false,
+        "WlEklemeOda": ""
+    },
+    "KomutLOG": {
+        "CezaOda": "",
+        "CezaBitiş": "",
+        "onaylog": "",
+        "redlog": "",
+        "PermLOG": "",
+        "İsimLOG": "",
+        "SilmeLOG": "",
+        "BanLOG": "",
+        "UnbanLOG": "",
+        "wlcezaLOG": "",
+        "uyarıLOG": "",
+        "Hex": ""
+    },
+   
+    "Resimler": {
+        "welcomeURL": "",
+        "şüpheliURL": "",
+        "moderasyonURL": "",
+        "AktifURL": "",
+        "BakımURL": "",
+        "UzunKısa": ""
+    },
+    "FiveM": {
+        "SunucuAD": " ",
+        "SunucuIP": "",
+        "SunucuTS": "",
+        "Ts3Durumu": false,
+        "KurulumOda": "",
+        "SunucuLimit": "",
+        "Youtube": "",
+        "Twitch": "",
+        "FiveMURL": "https://servers.fivem.net/servers/detail/"
+    },
+    "LOG": {
+       "GünlükVeri": "",
+        "welcomeLOG": "",
+        "ByByLOG": "",
+        "banLOG": "",
+        "unbanLOG": "",
+        "kickLOG": "",
+        "sesLOG": "",
+        "sesExtraLOG": "",
+        "mesajLOG": "",
+        "rolVermeLOG": "",
+        "rolAlmaLOG": "",
+        "rolGuncellemeLOG": "",
+        "permVermeLOG": "",
+        "permAlmaLOG": "",
+        "kanalOlusturmeLOG": "",
+        "kanalGuncellemeLOG": "",
+        "kanalSilmeLOG": "",
+        "isimLOG": "",
+        "şüpheliLOG": "",
+        "ReklamLOG": "",
+        "LevelLOG": ""
+    },
+    "Mülakat": {
+        "KayıtKategori": "",
+        "BeklemeOdası": "",
+        "Support": "",
+        "Helper": "",
+        "Kurallar": ""
+    },
+
+
+
+    "BlacklistHex": {
+        "HexKontrolOda": "",
+        "BlacklistHexUyarı": "",
+        "YetkiliOda": ""
+    },
+    "KayıtSistemi": {
+        "onayOda": "",
+        "redOda": ""
+    }
+}
