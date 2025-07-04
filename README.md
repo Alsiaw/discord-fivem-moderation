@@ -190,7 +190,7 @@ alsia-bot/
 Herhangi bir sorun yaşarsanız veya öneriniz varsa:
 
 
-- Discord alsiaw
+**- Discord alsiaw**
 
 ## 📄 Lisans
 
@@ -198,7 +198,8 @@ Bu proje MIT lisansı altında lisanslanmıştır.
 
 ## 👨‍💻 Geliştirici
 
-**Alsia** - *FiveM Discord Bot*
+*Made with ❤️ by Alsia*
+
 
 ---
 
