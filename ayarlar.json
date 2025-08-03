@@ -2,17 +2,17 @@
     "Bot": {
         "botID": "",
         "SunucuID": "",
-        "SunucuDavet": "",
+        "SunucuDavet": "https://discord.gg/",
         "prefix": ".",
         "botDurum": "dev by alsia"
         
     },
-   "botDurum": "",
+   "botDurum": "dev by alsia",
     "Embed": {
         "FormAD": "",
         "SunucuAD": "",
         "authorembed": "",
-        "link": ""
+        "link": "https://discord.gg/"
     },
     "Yetkiler": {
         "KayıtKomut": "",

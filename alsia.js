@@ -90,6 +90,7 @@ const snipek = require("./database/snipe-channel.js");
 const snipe = require("./database/snipe-user.js");
 
 const roller = require("./database/perm-log.js");
+const isimOnayDB = require("./database/isim-onay.js");
 
 const eventFiles = readdirSync("./alsia/eventler");
 
@@ -220,9 +221,16 @@ async function WlCezaCheck() {
         iconURL: member.guild.iconURL({dynamic: true})
       })
 
-      const logembed = await guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş).send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] })
-
-      await logembed.edit({  embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});    
+      const cezaBitisKanal = guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş);
+      
+      if (cezaBitisKanal) {
+        try {
+          const logembed = await cezaBitisKanal.send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] });
+          await logembed.edit({ embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});
+        } catch (error) {
+        }
+      }
+      
       await member.roles.remove(ayarlar.Permler.WlCeza).catch(() => {});
       await member.guild.members.cache.get(member.id).setNickname(`${İsim}`).catch(() => {});
 
@@ -267,22 +275,30 @@ async function UyarıCheck() {
         .setOverlayOpacity(0.5)
         .build();
   
-        const logembed = await guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş).send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] })
+        const cezaBitisKanal = guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş);
+        
+        if (cezaBitisKanal) {
+          try {
+            const logembed = await cezaBitisKanal.send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] });
 
-        const embedV2 = new EmbedBuilder()
-        .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
+            const embedV2 = new EmbedBuilder()
+            .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
 
 <a:5961darkbluetea:1327585257578561548> ・ \`ᴏʏᴜɴᴄᴜ:\` ${member}
-                        `)
-        .setColor('#041f49')
-        .setThumbnail(member.user.avatarURL({dynamic:true})) 
-        .setImage(`attachment://wlceza-alsia.png`)
-        .setAuthor({
-          name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
-          iconURL: member.guild.iconURL({dynamic: true})
-        })
+                            `)
+            .setColor('#041f49')
+            .setThumbnail(member.user.avatarURL({dynamic:true})) 
+            .setImage(`attachment://wlceza-alsia.png`)
+            .setAuthor({
+              name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
+              iconURL: member.guild.iconURL({dynamic: true})
+            })
 
-        await logembed.edit({  embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});    
+            await logembed.edit({ embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});
+          } catch (error) {
+          }
+        }
+        
         await member.roles.remove(ayarlar.Uyarı["1x"]).catch(() => {});
         db.delete("uyarı-" + member.id)
         return false;
@@ -303,22 +319,30 @@ async function UyarıCheck() {
         .setOverlayOpacity(0.5)
         .build();
 
-        const logembed = await guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş).send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] })
+        const cezaBitisKanal = guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş);
+        
+        if (cezaBitisKanal) {
+          try {
+            const logembed = await cezaBitisKanal.send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] });
 
-        const embedV2 = new EmbedBuilder()
-        .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
+            const embedV2 = new EmbedBuilder()
+            .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
 
 <a:5961darkbluetea:1327585257578561548> ・ \`ᴏʏᴜɴᴄᴜ:\` ${member}
-                        `)
-        .setColor('#041f49')
-        .setThumbnail(member.user.avatarURL({dynamic:true})) 
-        .setImage(`attachment://wlceza-alsia.png`)
-        .setAuthor({
-          name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
-          iconURL: member.guild.iconURL({dynamic: true})
-        })
+                            `)
+            .setColor('#041f49')
+            .setThumbnail(member.user.avatarURL({dynamic:true})) 
+            .setImage(`attachment://wlceza-alsia.png`)
+            .setAuthor({
+              name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
+              iconURL: member.guild.iconURL({dynamic: true})
+            })
 
-        await logembed.edit({  embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});    
+            await logembed.edit({ embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});
+          } catch (error) {
+          }
+        }
+        
         await member.roles.remove(ayarlar.Uyarı["2x"]).catch(() => {});
         await member.roles.add(ayarlar.Uyarı["1x"]).catch(() => {});
 
@@ -342,22 +366,30 @@ async function UyarıCheck() {
         .setOverlayOpacity(0.5)
         .build();
 
-        const logembed = await guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş).send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] })
+        const cezaBitisKanal = guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş);
+        
+        if (cezaBitisKanal) {
+          try {
+            const logembed = await cezaBitisKanal.send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] });
 
-        const embedV2 = new EmbedBuilder()
-        .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
+            const embedV2 = new EmbedBuilder()
+            .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
 
 <a:5961darkbluetea:1327585257578561548> ・ \`ᴏʏᴜɴᴄᴜ:\` ${member}
-                        `)
-        .setColor('#041f49')
-        .setThumbnail(member.user.avatarURL({dynamic:true})) 
-        .setImage(`attachment://wlceza-alsia.png`)
-        .setAuthor({
-          name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
-          iconURL: member.guild.iconURL({dynamic: true})
-        })
+                            `)
+            .setColor('#041f49')
+            .setThumbnail(member.user.avatarURL({dynamic:true})) 
+            .setImage(`attachment://wlceza-alsia.png`)
+            .setAuthor({
+              name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
+              iconURL: member.guild.iconURL({dynamic: true})
+            })
 
-        await logembed.edit({  embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});    
+            await logembed.edit({ embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});
+          } catch (error) {
+          }
+        }
+        
         await member.roles.remove(ayarlar.Uyarı["3x"]).catch(() => {});
         await member.roles.add(ayarlar.Uyarı["2x"]).catch(() => {});
 
@@ -381,22 +413,30 @@ async function UyarıCheck() {
         .setOverlayOpacity(0.5)
         .build();
 
-        const logembed = await guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş).send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] })
+        const cezaBitisKanal = guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş);
+        
+        if (cezaBitisKanal) {
+          try {
+            const logembed = await cezaBitisKanal.send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] });
 
-        const embedV2 = new EmbedBuilder()
-        .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
+            const embedV2 = new EmbedBuilder()
+            .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
 
 <a:5961darkbluetea:1327585257578561548> ・ \`ᴏʏᴜɴᴄᴜ:\` ${member}
-                        `)
-        .setColor('#041f49')
-        .setThumbnail(member.user.avatarURL({dynamic:true})) 
-        .setImage(`attachment://wlceza-alsia.png`)
-        .setAuthor({
-          name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
-          iconURL: member.guild.iconURL({dynamic: true})
-        })
+                            `)
+            .setColor('#041f49')
+            .setThumbnail(member.user.avatarURL({dynamic:true})) 
+            .setImage(`attachment://wlceza-alsia.png`)
+            .setAuthor({
+              name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
+              iconURL: member.guild.iconURL({dynamic: true})
+            })
 
-        await logembed.edit({  embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});    
+            await logembed.edit({ embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});
+          } catch (error) {
+          }
+        }
+        
         await member.roles.remove(ayarlar.Uyarı["4x"]).catch(() => {});
         await member.roles.add(ayarlar.Uyarı["3x"]).catch(() => {});
 
@@ -420,22 +460,30 @@ async function UyarıCheck() {
         .setOverlayOpacity(0.5)
         .build();
 
-        const logembed = await guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş).send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] })
+        const cezaBitisKanal = guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş);
+        
+        if (cezaBitisKanal) {
+          try {
+            const logembed = await cezaBitisKanal.send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] });
 
-        const embedV2 = new EmbedBuilder()
-        .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
+            const embedV2 = new EmbedBuilder()
+            .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
 
 <a:5961darkbluetea:1327585257578561548> ・ \`ᴏʏᴜɴᴄᴜ:\` ${member}
-                        `)
-        .setColor('#041f49')
-        .setThumbnail(member.user.avatarURL({dynamic:true})) 
-        .setImage(`attachment://wlceza-alsia.png`)
-        .setAuthor({
-          name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
-          iconURL: member.guild.iconURL({dynamic: true})
-        })
+                            `)
+            .setColor('#041f49')
+            .setThumbnail(member.user.avatarURL({dynamic:true})) 
+            .setImage(`attachment://wlceza-alsia.png`)
+            .setAuthor({
+              name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
+              iconURL: member.guild.iconURL({dynamic: true})
+            })
 
-        await logembed.edit({  embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});    
+            await logembed.edit({ embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});
+          } catch (error) {
+          }
+        }
+        
         await member.roles.remove(ayarlar.Uyarı["5x"]).catch(() => {});
         await member.roles.add(ayarlar.Uyarı["4x"]).catch(() => {});
 
@@ -459,22 +507,30 @@ async function UyarıCheck() {
         .setOverlayOpacity(0.5)
         .build();
 
-        const logembed = await guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş).send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] })
+        const cezaBitisKanal = guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş);
+        
+        if (cezaBitisKanal) {
+          try {
+            const logembed = await cezaBitisKanal.send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] });
 
-        const embedV2 = new EmbedBuilder()
-        .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
+            const embedV2 = new EmbedBuilder()
+            .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
 
 <a:5961darkbluetea:1327585257578561548> ・ \`ᴏʏᴜɴᴄᴜ:\` ${member}
-                        `)
-        .setColor('#041f49')
-        .setThumbnail(member.user.avatarURL({dynamic:true})) 
-        .setImage(`attachment://wlceza-alsia.png`)
-        .setAuthor({
-          name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
-          iconURL: member.guild.iconURL({dynamic: true})
-        })
+                            `)
+            .setColor('#041f49')
+            .setThumbnail(member.user.avatarURL({dynamic:true})) 
+            .setImage(`attachment://wlceza-alsia.png`)
+            .setAuthor({
+              name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
+              iconURL: member.guild.iconURL({dynamic: true})
+            })
 
-        await logembed.edit({  embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});    
+            await logembed.edit({ embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});
+          } catch (error) {
+          }
+        }
+        
         await member.roles.remove(ayarlar.Uyarı["6x"]).catch(() => {});
         await member.roles.add(ayarlar.Uyarı["5x"]).catch(() => {});
 
@@ -498,22 +554,30 @@ async function UyarıCheck() {
         .setOverlayOpacity(0.5)
         .build();
 
-        const logembed = await guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş).send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] })
+        const cezaBitisKanal = guild.channels.cache.get(ayarlar.KomutLOG.CezaBitiş);
+        
+        if (cezaBitisKanal) {
+          try {
+            const logembed = await cezaBitisKanal.send({ files: [{ attachment: welcome, name: "wlceza-alsia.png" }] });
 
-        const embedV2 = new EmbedBuilder()
-        .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
+            const embedV2 = new EmbedBuilder()
+            .setDescription(`<a:utility:1327600287367696515> ・ \`${member.displayName}\` *, uyarınız zaman aşımı sebebi ile azaltılmıştır geçmiş olsun.*
 
 <a:5961darkbluetea:1327585257578561548> ・ \`ᴏʏᴜɴᴄᴜ:\` ${member}
-                        `)
-        .setColor('#041f49')
-        .setThumbnail(member.user.avatarURL({dynamic:true})) 
-        .setImage(`attachment://wlceza-alsia.png`)
-        .setAuthor({
-          name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
-          iconURL: member.guild.iconURL({dynamic: true})
-        })
+                            `)
+            .setColor('#041f49')
+            .setThumbnail(member.user.avatarURL({dynamic:true})) 
+            .setImage(`attachment://wlceza-alsia.png`)
+            .setAuthor({
+              name:`${ayarlar.Embed.authorembed} - ᴄᴇᴢᴀ ꜱɪꜱᴛᴇᴍɪ`, 
+              iconURL: member.guild.iconURL({dynamic: true})
+            })
 
-        await logembed.edit({  embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});    
+            await logembed.edit({ embeds: [embedV2], files: [{ attachment: welcome, name: "wlceza-alsia.png" }] }).catch(() => {});
+          } catch (error) {
+          }
+        }
+        
         await member.roles.remove(ayarlar.Uyarı["7x"]).catch(() => {});
         await member.roles.add(ayarlar.Uyarı["6x"]).catch(() => {});
 
@@ -525,28 +589,9 @@ async function UyarıCheck() {
   }
 }
 
-setInterval(async () => {
-  await WlCezaCheck();
-  await UyarıCheck();
-  return false;
+setInterval(() => {
+  WlCezaCheck();
+  UyarıCheck();
 }, 60000);
 
-process.on("unhandledRejection", e => { 
-  console.log(e)
-}) 
-process.on("uncaughtException", e => { 
-  console.log(e)
-})  
-process.on("uncaughtExceptionMonitor", e => { 
-  console.log(e)
-})
-
-process.on("warning", (warn) => { console.log("Warn!"+warn) });
-process.on("beforeExit", () => { console.log("Sistem Kapanıyor!")});
-client.on("rateLimit", (rate) => { console.log("Client Rate Limit'e Uğradı; "+rate)})
-client.on(Events.Warn,(warn) => { console.log(warn) })
-client.on(Events.Error, (e) => {
-  console.log((`Hata: `+e))
-}); 
-
-client.login(token)
+client.login(token);
